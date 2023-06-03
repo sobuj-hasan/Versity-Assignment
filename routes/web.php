@@ -11,6 +11,7 @@ Route::get('/dashboard', function () {
 
     // Fontend Controller Routes
     Route::get('/', [FrontendController::class, 'index'])->name('index');
+    Route::post('search/train', [FrontendController::class, 'search_train'])->middleware(['auth'])->name('search.train');
     Route::get('aboutus', [FrontendController::class, 'aboutus'])->name('aboutus');
     Route::get('address', [FrontendController::class, 'address'])->name('address');
     Route::get('booking', [FrontendController::class, 'booking'])->name('booking');

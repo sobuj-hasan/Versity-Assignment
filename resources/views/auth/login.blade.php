@@ -88,14 +88,21 @@
                <div class="login-page-form-header">
                </div>
                <div class="login-form-input-wrapper">
-                  <form action="{{ route('login') }}" method="POST" id="loginForm">
+                  <form action="{{ route('login') }}" method="POST">
+                    @csrf
                      <div class="login-form-control-single">
                         <label for="mobile_number">Mobile Number</label>
-                        <input type="tel" name="phone" id="mobile_number" placeholder="Enter your mobile number" autocomplete="off">
+                        <input type="text" name="phone" placeholder="Enter your mobile number">
+                        @error('phone')
+                            <span style="color: red;">{{ $message }}</span>
+                        @enderror
                      </div>
                      <div class="login-form-control-single">
                         <label for="password">Password</label>
-                        <input type="password" name="password" id="password" placeholder="Enter your password" autocomplete="off">
+                        <input type="password" name="password" placeholder="Enter your password">
+                        @error('password')
+                            <span style="color: red;">{{ $message }}</span>
+                        @enderror
                         <button class="password-show-hide-btn" type="button">
                         <img src="https://eticket.railway.gov.bd/img/icon/eye-slash-icon.svg" alt="Eye slash icon">
                         </button>

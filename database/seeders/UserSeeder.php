@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Super Admin',
             'role' => 1,
-            'phone' => Str::random(10),
+            'phone' => '012345678911',
             'email_verified_at' => now(),
             'password' => Hash::make('admin'),
             'remember_token' => Str::random(10),

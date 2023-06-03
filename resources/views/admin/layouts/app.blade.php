@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title> @yield('title') - Mohammad Nayem</title>
+        <title> @yield('title') - Assignment Project</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta content="" />
         <meta content="Coderthemes" name="author" />
@@ -42,7 +42,7 @@
                 <div class="topbar-left">
                     <a href="{{ route('admin.index') }}" class="logo">
                         <span>
-                            <h4 class="text-white pt-2"><strong>Mohammad Nayem</strong></h4>
+                            <h4 class="text-white pt-2"><strong>Assignment project</strong></h4>
                         </span>
                         <i>
                             <img src="{{ asset('Backend') }}/assets/images/logo_sm.png" alt="" height="28">
@@ -112,18 +112,18 @@
                     <div id="sidebar-menu">
                         <!-- Left Menu Start -->
                         <ul class="metismenu" id="side-menu">
-                            <li class="menu-title">Mohammad Nayem</li>
+                            <li class="menu-title">Assignment Project</li>
                             <li>
                                 <a href="{{ route('admin.index') }}">
                                     <i class="fi-air-play"></i>  <span> Dashboard </span>
                                 </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="javascript: void(0);"><i class="far fa-question-circle"></i> <span>Customer queries</span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="{{ route('querstion.index') }}">View All</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a href="javascript: void(0);"><i class="fi-head"></i> <span> Manage Users</span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">

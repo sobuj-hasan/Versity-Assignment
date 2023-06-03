@@ -797,7 +797,7 @@
             <div class="container-wrapper">
                <div class="site-wrapper clearfix">
                   <div class="site-logo">
-                     <a title="Bangladesh Railway" href="https://eticket.railway.gov.bd/en" class="header-logo">
+                     <a title="Bangladesh Railway" href="{{ route('index') }}" class="header-logo">
                         <div class="header-logo-img">
                            <img src="{{ asset('img/logo.png') }}" width="60" alt="Bangladesh Railway Logo">
                         </div>
@@ -819,6 +819,12 @@
                           @endif
                           @if (Auth::user()->role == 2)
                               <li><a title="Login" href="#" class="">{{ Auth::user()->name }}</a></li>
+                              <li>
+                                 <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit">Logout </button>
+                                 </form>
+                              </li>
                           @endif
                         @endauth
                      </ul>

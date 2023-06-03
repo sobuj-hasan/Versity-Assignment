@@ -27,13 +27,6 @@
                 </div>
             </div><!-- end col -->
 
-            <div class="col-lg-3 col-md-6 text-center">
-                <div style="box-shadow: 2px 2px 12px #e2e2e2;" class="card-box">
-                    <h5 class="m-0 text-uppercase font-bold font-secondary text-overflow">My Services</h5>
-                    <h3 class="font-600 mt-4"> 10+ </h3>
-                </div>
-            </div><!-- end col -->
-
         </div>
         <!-- end row -->
 

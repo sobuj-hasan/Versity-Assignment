@@ -370,7 +370,7 @@
             <div class="container-wrapper">
                <div class="site-wrapper clearfix">
                   <div class="site-logo">
-                     <a title="Customer centric railway system" href="https://eticket.railway.gov.bd/en" class="header-logo">
+                     <a title="Customer centric railway system" href="{{ route('index') }}" class="header-logo">
                         <div class="header-logo-img">
                            <img src="img/logo.png" width="60" alt="Customer centric railway system Logo">
                         </div>
@@ -390,6 +390,12 @@
                           @endif
                           @if (Auth::user()->role == 2)
                               <li><a title="Login" href="#" class="">{{ Auth::user()->name }}</a></li>
+                              <li>
+                                 <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit">Logout </button>
+                                 </form>
+                              </li>
                           @endif
                         @endauth
                      </ul>
@@ -563,19 +569,40 @@
                <div class="srch_container" style="padding:10px 0;">
                   <div class="block col-md-6 search-col-rw" style="position: static;padding-left: 0;">
                      <div id="dialog_container_block" title="Message Dialog"></div>
-                     <form name="trainsearch" id="trainsearch" onsubmit="return validateTrainForm(this)">
+                     <form method="POST" action="{{ route('search.train') }}" name="trainsearch" id="trainsearch">
+                        @csrf
                         <ul class="list-inline">
                            <div class="row">
                               <div class="col-md-6">
                                  <div class="form-group">
                                     <label for="dest_from">From</label>
-                                    <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input type="text" class="form-control jqchars  ui-autocomplete-input" id="dest_from" name="dest_from" placeholder="From Station" maxlength="15" value="" autocomplete="off">
+                                    <select name="form_value" class="form-control">
+                                       <option value="">Choose Station</option>
+                                       <option value="Dhaka">Dhaka</option>
+                                       <option value="Dhaka Cantonment">Dhaka Cantonment</option>
+                                       <option value="Bimanbandhar">Bimanbandhar</option>
+                                       <option value="Chattogram railway station">Chattogram railway station</option>
+                                       <option value="Chattogram">Chattogram</option>
+                                    </select>
+                                    @error('form_value')
+                                        <span style="colo: red;">{{ $message }}</span>
+                                    @enderror
                                  </div>
                               </div>
                               <div class="col-md-6">
                                  <div class="form-group">
                                     <label for="dest_to">To</label>
-                                    <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input type="text" class="form-control jqchars ui-autocomplete-input" id="dest_to" name="dest_to" placeholder="To Station" maxlength="15" value="" autocomplete="off">
+                                    <select name="to_value" class="form-control">
+                                       <option value="">Choose Station</option>
+                                       <option value="Chattogram">Chattogram</option>
+                                       <option value="Chattogram railway station">Chattogram railway station</option>
+                                       <option value="Bimanbandhar">Bimanbandhar</option>
+                                       <option value="Dhaka Cantonment">Dhaka Cantonment</option>
+                                       <option value="Dhaka">Dhaka</option>
+                                    </select>
+                                    @error('to_value')
+                                        <span style="colo: red;">{{ $message }}</span>
+                                    @enderror
                                  </div>
                               </div>
                            </div>
@@ -583,7 +610,10 @@
                               <div class="col-md-6">
                                  <div class="form-group">
                                     <label for="doj">Date of Journey</label>
-                                    <input type="text" class="datepicker form-control hasDatepicker" id="doj" name="doj" data-date-format="dd/mm/yyyy" placeholder="Pick a date" value="" readonly="true"><img class="ui-datepicker-trigger" src="img/calendar.png" alt="..." title="...">
+                                    <input type="date" class="form-control hasDatepicker" name="date" placeholder="Pick a date">
+                                    @error('date')
+                                        <span style="colo: red;">{{ $message }}</span>
+                                    @enderror
                                  </div>
                               </div>
                               <div class="col-md-6">
@@ -602,6 +632,9 @@
                                        <option value="SHULOV">SHULOV</option>
                                        <option value="AC_CHAIR">AC_CHAIR</option>
                                     </select>
+                                    @error('choose_class')
+                                        <span style="colo: red;">{{ $message }}</span>
+                                    @enderror
                                  </div>
                               </div>
                            </div>
@@ -619,7 +652,7 @@
                               </div>
                               <div class="col-md-12" style="margin-top:20px;">
                                  <div class="railway-ticket-search-submit-btn">
-                                    <button type="submit">Search Trains</button>
+                                    <button type="submit">Search Ticket</button>
                                  </div>
                               </div>
                            </div>

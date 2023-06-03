@@ -35,5 +35,23 @@ class FrontendController extends Controller
         return back();
     }
 
+    public function search_train(Request $request){
+        $request->validate([
+            'form_value' => 'required|min:2',
+            'to_value' => 'required',
+            'date' => 'required',
+            'choose_class' => 'required',
+        ]);
+
+        if ($request->form_value ==  Auth::user()->address) {
+            Notify::error('You are not more than 5 km away from the station. Go to the station and get the ticket', 'Error');
+            return view('error-page');
+        }else{
+            Notify::success('Your ticket boocking successfull', 'Success');
+            return view('success-page');
+        }
+
+    }
+
 
 }
