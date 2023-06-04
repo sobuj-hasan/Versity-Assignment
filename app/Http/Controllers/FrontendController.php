@@ -48,7 +48,7 @@ class FrontendController extends Controller
             return view('error-page');
         }else{
             Notify::success('Your ticket boocking successfull', 'Success');
-            return view('success-page');
+            return view('success-page', compact('request'));
         }
 
     }
